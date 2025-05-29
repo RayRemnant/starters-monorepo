@@ -1,0 +1,16 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "",
+  "license": "0BSD",
+  "author": "rayremnant",
+  "main": "server.js",
+  "dependencies": {
+    "@koa/cors": "latest",
+    "@koa/router": "latest",
+    "koa": "latest",
+    "koa-bodyparser": "latest",
+    "koa-helmet": "latest",
+    "koa-router": "latest"
+  }
+}
