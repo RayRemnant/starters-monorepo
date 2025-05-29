@@ -1,0 +1,19 @@
+{
+  "name": "koa-vercel",
+  "version": "0.0.1",
+  "description": "koa hosted on Vercel",
+  "license": "0BSD",
+  "author": "rayremnant",
+  "dependencies": {
+    "@koa/cors": "latest",
+    "@koa/router": "latest",
+    "koa": "latest",
+    "koa-bodyparser": "latest",
+    "koa-helmet": "latest",
+    "koa-router": "latest"
+  },
+  "devDependencies": {
+    "dotenv": "latest",
+    "nodemon": "latest"
+  }
+}
