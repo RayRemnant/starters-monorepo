@@ -1,0 +1,15 @@
+{
+  "name": "puppeteer-core-vercel-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "license": "0BSD",
+  "author": "rayremnant",
+  "main": "/api/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "latest",
+    "puppeteer-core": "latest"
+  }
+}
