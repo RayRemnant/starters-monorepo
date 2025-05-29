@@ -1,0 +1,10 @@
+{
+  "name": "mongodb-atlas-vercel",
+  "version": "1.0.0",
+  "description": "MongoDB Atlas API hosted on Vercel",
+  "license": "0BSD",
+  "author": "rayremnant",
+  "dependencies": {
+    "mongodb": "latest"
+  }
+}
