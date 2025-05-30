@@ -12,5 +12,6 @@
     "typescriptreact",
     "json",
     "jsonc"
-  ]
+  ],
+  "files.eol": "\n"
 }

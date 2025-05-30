@@ -1,8 +1,6 @@
 export default () => {
-    console.log("export default - OKAY")
+  console.log("export default - OKAY")
 }
-
-
 
 //exports.default
 //when importing, executed as variable.default()

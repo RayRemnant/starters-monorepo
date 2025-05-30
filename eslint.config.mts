@@ -22,39 +22,49 @@ export default [
       perfectionist
     },
     rules: {
-		"no-multiple-empty-lines": ["error", { 
-      "max": 0,
-      "maxEOF": 0,
-      "maxBOF": 0
-    }],
-    "no-trailing-spaces": "error",
-    "eol-last": ["error", "never"],
-    
-    // JSON indentation - this should fix tab issues
-    "jsonc/indent": ["error", 2, {
-      "SwitchCase": 1,
-      "VariableDeclarator": 1,
-      "outerIIFEBody": 1,
-      "MemberExpression": 1,
-      "FunctionDeclaration": { "parameters": 1, "body": 1 },
-      "FunctionExpression": { "parameters": 1, "body": 1 },
-      "CallExpression": { "arguments": 1 },
-      "ArrayExpression": 1,
-      "ObjectExpression": 1,
-      "ImportDeclaration": 1,
-      "flatTernaryExpressions": false,
-      "ignoreComments": false
-    }],
-    
-    // Other JSON formatting
-    "jsonc/object-curly-spacing": ["error", "always"],
-    "jsonc/array-bracket-spacing": ["error", "never"],
-    "jsonc/key-spacing": ["error", { 
-      "beforeColon": false, 
-      "afterColon": true 
-    }],
-    "jsonc/comma-style": ["error", "last"],
-    "jsonc/comma-dangle": ["error", "never"],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          max: 0,
+          maxEOF: 0,
+          maxBOF: 0
+        }
+      ],
+      "no-trailing-spaces": "error",
+      "eol-last": ["error", "always"],
+
+      // JSON indentation - this should fix tab issues
+      "jsonc/indent": [
+        "error",
+        2,
+        {
+          SwitchCase: 1,
+          VariableDeclarator: 1,
+          outerIIFEBody: 1,
+          MemberExpression: 1,
+          FunctionDeclaration: { parameters: 1, body: 1 },
+          FunctionExpression: { parameters: 1, body: 1 },
+          CallExpression: { arguments: 1 },
+          ArrayExpression: 1,
+          ObjectExpression: 1,
+          ImportDeclaration: 1,
+          flatTernaryExpressions: false,
+          ignoreComments: false
+        }
+      ],
+
+      // Other JSON formatting
+      "jsonc/object-curly-spacing": ["error", "always"],
+      "jsonc/array-bracket-spacing": ["error", "never"],
+      "jsonc/key-spacing": [
+        "error",
+        {
+          beforeColon: false,
+          afterColon: true
+        }
+      ],
+      "jsonc/comma-style": ["error", "last"],
+      "jsonc/comma-dangle": ["error", "never"],
       "perfectionist/sort-objects": "off",
       "jsonc/sort-keys": [
         "error",
@@ -162,7 +172,7 @@ export default [
     }
   },
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ["**/*.{js,mjs,jsx,ts,tsx}"],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
@@ -306,7 +316,7 @@ export default [
       ],
 
       // Additional useful ESLint rules
-      "no-console": "warn",
+      "no-console": "off",
       "no-debugger": "error",
       "no-unused-vars": "off",
       "prefer-const": "error"

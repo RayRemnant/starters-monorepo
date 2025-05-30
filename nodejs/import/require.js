@@ -5,9 +5,8 @@ moduleExports()
 
 //ERROR
 try {
-    const exportDefault = require("../export/default/export default.mjs")
-    exportDefault()
+  const exportDefault = require("../export/default/export default.mjs")
+  exportDefault()
 } catch (e) {
-    console.log(`require(..export default.mjs) - ERROR`)
+  console.log(`require(..export default.mjs) - ERROR`)
 }
-

@@ -1,14 +1,12 @@
 //NOT WORKING
 
 exports.name = () => {
-    console.log("exports.name - OKAY")
+  console.log("exports.name - OKAY")
 }
 
 module.exports = () => {
-    console.log("module.exports - OKAY")
+  console.log("module.exports - OKAY")
 }
-
-
 
 //exports.default
 //when importing, executed as variable.default()
