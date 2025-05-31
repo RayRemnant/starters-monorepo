@@ -34,6 +34,17 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 10
+                # Pull environment variables from Vercel
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      
+      - name: Pull Vercel Environment Variables
+        run: vercel env pull .env.local
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        working-directory: firebase-vercel
       - run: cd firebase-vercel && pnpm install && pnpm test
 
   test-koa:
