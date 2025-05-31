@@ -28,5 +28,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run all tests
+        run: |
+          cd firebase-vercel
+          pnpm test
