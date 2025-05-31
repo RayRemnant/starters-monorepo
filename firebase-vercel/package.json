@@ -4,11 +4,16 @@
   "description": "",
   "license": "0BSD",
   "author": "rayremnant",
+  "type": "module",
   "main": "/api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "firebase": "latest"
+  },
+  "devDependencies": {
+    "@vercel/node": "latest",
+    "@vercel/sdk": "latest"
   }
 }
