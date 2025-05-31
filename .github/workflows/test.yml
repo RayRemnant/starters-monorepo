@@ -8,7 +8,6 @@ on:
 jobs:
   changes:
     runs-on: ubuntu-latest
-    environment: production
     outputs:
       firebase-vercel: ${{ steps.filter.outputs.firebase-vercel }}
       koa: ${{ steps.filter.outputs.koa }}
@@ -71,7 +70,6 @@ jobs:
     if: needs.changes.outputs.firebase-vercel == 'true' 
     # && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
