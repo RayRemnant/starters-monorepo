@@ -1,5 +1,4 @@
 {
   "git": {
-    "autoDeploy": false
-  }
+    "deploymentEnabled": false  }
 }
