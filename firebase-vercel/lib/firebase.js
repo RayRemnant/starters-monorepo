@@ -17,39 +17,22 @@ const db = firestore.getFirestore(app)
 async function getDoc(collectionName, docId) {
   const docRef = firestore.doc(db, collectionName, docId)
   const docSnap = await firestore.getDoc(docRef)
-
-  if (docSnap.exists()) {
-    //console.log(docSnap.data())
-
-    console.log("GET DOC OK")
-    return docSnap.data()
-  } else {
-    // docSnap.data() will be undefined in this case
-    console.log("No such document!")
-    return {}
-  }
+  return docSnap.exists() ? docSnap.data() : {}
 }
 
 // Get multiple docs
 async function getDocs(collectionName) {
   const collectionData = firestore.collection(db, collectionName)
   const collectionSnapshot = await firestore.getDocs(collectionData)
-  const docs = collectionSnapshot.docs.map(_doc => _doc.data())
-  return docs
+  return collectionSnapshot.docs.map(_doc => _doc.data())
 }
 
 // Set single doc
 async function setDoc(collectionName, doc) {
-  try {
-    await firestore.setDoc(firestore.doc(db, collectionName, doc.id), {
-      ...doc,
-      updated: firestore.serverTimestamp()
-    })
-
-    console.log("DOC WRITE OK")
-  } catch (error) {
-    console.error("DOC WRITE ERROR: ", error)
-  }
+  return await firestore.setDoc(firestore.doc(db, collectionName, doc.id), {
+    ...doc,
+    updated: firestore.serverTimestamp()
+  })
 }
 
 // Set multiple docs
@@ -58,9 +41,7 @@ async function setDocs(collectionName, docs) {
   //var batch = db.batch();
   //batch.commit();
 
-  for (const doc of docs) {
-    await setDoc(collectionName, doc)
-  }
+  docs.forEach(doc => setDoc(collectionName, doc))
 }
 
 module.exports = { getDoc, getDocs, setDoc, setDocs }
