@@ -35,6 +35,13 @@ jobs:
       projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
       storageBucket: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
       NODE_ENV: test
+    run: |
+      echo "apiKey: $apiKey"
+      echo "appId: $appId"
+      echo "authDomain: $authDomain"
+      echo "messagingSenderId: $messagingSenderId"
+      echo "projectId: $projectId"
+      echo "storageBucket: $storageBucket"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
