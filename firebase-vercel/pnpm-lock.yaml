@@ -28,7 +28,7 @@ importers:
         specifier: latest
         version: 3.1.4(vitest@3.1.4)
       dotenv:
-        specifier: ^16.5.0
+        specifier: latest
         version: 16.5.0
       vitest:
         specifier: latest
