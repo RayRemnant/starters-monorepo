@@ -63,4 +63,14 @@ async function setDocs<T extends Pick<ActualDocumentData, "id"> = Pick<ActualDoc
   }
 }
 
-export { getDoc, getDocs, setDoc, setDocs }
+async function deleteDoc(collectionName: string, docId: string): Promise<void> {
+  await firestore.deleteDoc(firestore.doc(db, collectionName, docId))
+}
+
+async function deleteDocs(collectionName: string, docIds: string[]): Promise<void> {
+  await Promise.all(
+    docIds.map(docId => firestore.deleteDoc(firestore.doc(db, collectionName, docId)))
+  )
+}
+
+export { deleteDoc, deleteDocs, getDoc, getDocs, setDoc, setDocs }
