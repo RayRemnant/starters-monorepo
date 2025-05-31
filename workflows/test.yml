@@ -1,34 +1,53 @@
-# .github/workflows/test.yml
-name: CI
+# .github/workflows/ci.yml
+name: Monorepo tests
 
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
 
 jobs:
-  test:
+  changes:
     runs-on: ubuntu-latest
-
+    outputs:
+      firebase-vercel: ${{ steps.filter.outputs.firebase-vercel }}
+      koa: ${{ steps.filter.outputs.koa }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            firebase-vercel:
+              - 'firebase-vercel/**'
+            koa:
+              - 'koa/**'
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+  test-firebase-vercel:
+    needs: changes
+    if: needs.changes.outputs.firebase-vercel == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v3
         with:
           version: 10
+      - run: pnpm install
+      - run: cd firebase-vercel && pnpm test
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run all tests
-        run: |
-          cd firebase-vercel
-          pnpm test
+  test-koa:
+    needs: changes
+    if: needs.changes.outputs.koa == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 10
+      - run: pnpm install
+      - run: cd koa && pnpm test
