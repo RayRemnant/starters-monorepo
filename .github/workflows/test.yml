@@ -84,7 +84,7 @@ jobs:
       - name: Deploy to Vercel
         run: |
           cd firebase-vercel
-          vercel --prod --token ${{ secrets.VERCEL_TOKEN }} \
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes \
           --env FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }} \
           --env FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }} \
           --env FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }} \
