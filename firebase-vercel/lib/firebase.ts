@@ -20,6 +20,13 @@ const firebaseConfig = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 }
 
+console.log("apiKey", firebaseConfig.apiKey)
+console.log("appId", firebaseConfig.appId)
+console.log("authDomain", firebaseConfig.authDomain)
+console.log("messagingSenderId", firebaseConfig.messagingSenderId)
+console.log("projectId", firebaseConfig.projectId)
+console.log("storageBucket", firebaseConfig.storageBucket)
+
 const app = initializeApp(firebaseConfig)
 const db = firestore.getFirestore(app)
 
