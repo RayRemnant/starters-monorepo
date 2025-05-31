@@ -34,8 +34,7 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 10
-      - run: pnpm install
-      - run: cd firebase-vercel && pnpm test
+      - run: cd firebase-vercel && pnpm install && pnpm test
 
   test-koa:
     needs: changes
@@ -49,5 +48,4 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 10
-      - run: pnpm install
-      - run: cd koa && pnpm test
+      - run: cd koa && pnpm install && pnpm test
