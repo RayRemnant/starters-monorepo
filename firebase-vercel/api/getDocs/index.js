@@ -1,4 +1,4 @@
-const { getDocs } = require("../../firebase")
+const { getDocs } = require("../../lib/firebase")
 
 module.exports = async (req, res) => {
   const {
