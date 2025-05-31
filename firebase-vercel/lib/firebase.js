@@ -19,7 +19,7 @@ async function getDoc(collectionName, docId) {
   const docSnap = await firestore.getDoc(docRef)
 
   if (docSnap.exists()) {
-    console.log(docSnap.data())
+    //console.log(docSnap.data())
 
     console.log("GET DOC OK")
     return docSnap.data()
