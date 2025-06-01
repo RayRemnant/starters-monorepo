@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  destroy-vercel-deployment:
+  cleanup-vercel-deployment:
     runs-on: ubuntu-latest
     environment: preview
     steps:

@@ -1,0 +1,26 @@
+name: Cleanup GitHub Deployments
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup-github-deployments:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install GitHub CLI and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo apt-get install -y gh
+
+      - name: Delete all deployments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          for ID in $(gh api --method GET "/repos/$REPO/deployments?per_page=100" | jq -r ".[] | .id"); do
+            echo "Deactivating deployment $ID"
+            gh api -H "Accept: application/vnd.github+json" --method POST /repos/$REPO/deployments/$ID/statuses -f "state=inactive"
+            echo "Deleting deployment $ID"
+            gh api -H "Accept: application/vnd.github+json" --method DELETE /repos/$REPO/deployments/$ID
+          done
