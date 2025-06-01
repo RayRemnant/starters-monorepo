@@ -1,15 +1,14 @@
-name: deploy preview
+name: deploy dev
 
 on:
   push:
-    branches: [preview]
+    branches: 
   pull_request:
-    branches: [preview]
+    branches: 
   workflow_dispatch:
 
 jobs:
   changes:
-    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     runs-on: ubuntu-latest
     outputs:
       firebase-vercel: ${{ steps.filter.outputs.firebase-vercel }}
