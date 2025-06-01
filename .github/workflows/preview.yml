@@ -2,12 +2,15 @@
 name: Monorepo tests
 
 on:
-  push: [preview]
-  pull_request: [preview]
+  push:
+    branches: [preview]
+  pull_request:
+    branches: [preview]
   workflow_dispatch:
 
 jobs:
   changes:
+    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     runs-on: ubuntu-latest
     outputs:
       firebase-vercel: ${{ steps.filter.outputs.firebase-vercel }}
@@ -24,6 +27,7 @@ jobs:
               - 'koa/**'
 
   test-firebase-vercel:
+    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     needs: changes
     if: needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
@@ -45,6 +49,7 @@ jobs:
       - run: cd firebase-vercel && pnpm install && pnpm test
 
   test-koa:
+    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     needs: changes
     if: needs.changes.outputs.koa == 'true'
     runs-on: ubuntu-latest
@@ -59,6 +64,7 @@ jobs:
       - run: cd koa && pnpm install && pnpm test
 
   deploy-firebase-vercel:
+    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     needs: [changes, test-firebase-vercel]
     if: needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
