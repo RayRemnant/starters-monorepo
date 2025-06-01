@@ -1,10 +1,10 @@
-name: deploy dev
+name: deploy preview
 
 on:
   push:
-    branches: 
+    branches: [preview]
   pull_request:
-    branches: 
+    branches: [preview]
   workflow_dispatch:
 
 jobs:
@@ -62,7 +62,7 @@ jobs:
   deploy-firebase-vercel:
     needs: [changes, test-firebase-vercel]
     runs-on: ubuntu-latest
-    environment: dev
+    environment: preview
     steps:
       - uses: actions/checkout@v4
 
