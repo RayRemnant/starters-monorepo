@@ -15,7 +15,7 @@ jobs:
 
       - name: Delete all deployments
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
           REPO: ${{ github.repository }}
         run: |
           for ID in $(gh api --method GET "/repos/$REPO/deployments?per_page=100" | jq -r ".[] | .id"); do
