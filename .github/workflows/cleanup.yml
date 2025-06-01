@@ -1,4 +1,4 @@
-name: Cleanup Vercel Preview Deployments
+name: cleanup vercel deployments
 
 description: "Manually destroy Vercel preview deployments."
 

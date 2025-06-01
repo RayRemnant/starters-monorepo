@@ -1,4 +1,4 @@
-name: Cleanup GitHub Deployments
+name: cleanup github deployments
 
 on:
   workflow_dispatch:

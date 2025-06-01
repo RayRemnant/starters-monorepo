@@ -1,5 +1,4 @@
-# .github/workflows/ci.yml
-name: Production Test & Deploy
+name: deploy production
 
 on:
   push: [main]
