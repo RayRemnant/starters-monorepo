@@ -26,6 +26,7 @@ jobs:
 
   test-firebase-vercel:
     needs: changes
+    if: needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
     env:
       FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
@@ -46,6 +47,7 @@ jobs:
 
   test-koa:
     needs: changes
+    if: needs.changes.outputs.koa == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
