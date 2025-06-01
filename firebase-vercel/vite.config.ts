@@ -20,7 +20,7 @@ const entries = apiFiles.reduce(
 export default defineConfig({
   build: {
     // Build for Node.js environment
-    target: "node18",
+    target: "node22",
 
     // Output to preserve the API structure
     outDir: "dist",
@@ -35,7 +35,6 @@ export default defineConfig({
     rollupOptions: {
       // Keep these as external dependencies
       external: [
-        "firebase-admin"
         // Add other external deps that should not be bundled
       ],
 

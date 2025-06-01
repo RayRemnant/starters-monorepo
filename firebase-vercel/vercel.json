@@ -1,4 +1,16 @@
 {
+	  "functions": {
+    "dist/api/*/index.js": {
+      "runtime": "nodejs22.x"
+    }
+  },
+  "rewrites": [
+    {
+      "destination": "/dist/api/$1",
+      "source": "/api/(.*)"
+    }
+  ],
   "git": {
-    "deploymentEnabled": false  }
+    "deploymentEnabled": false
+  }
 }

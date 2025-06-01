@@ -23,8 +23,8 @@
     "@vitest/coverage-v8": "latest",
     "@vitest/ui": "latest",
     "dotenv": "latest",
-    "glob": "^11.0.2",
-    "vite": "^6.3.5",
+    "glob": "latest",
+    "vite": "latest",
     "vitest": "latest"
   }
 }
