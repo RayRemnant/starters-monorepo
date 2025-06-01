@@ -1,7 +1,5 @@
 name: cleanup vercel deployments
 
-description: "Manually destroy Vercel preview deployments."
-
 on:
   workflow_dispatch:
 
