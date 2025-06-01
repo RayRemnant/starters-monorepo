@@ -26,7 +26,6 @@ jobs:
 
   test-firebase-vercel:
     needs: changes
-    if: (github.ref == 'refs/heads/preview' || github.head_ref == 'preview') && needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
     env:
       FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
@@ -47,7 +46,6 @@ jobs:
 
   test-koa:
     needs: changes
-    if: (github.ref == 'refs/heads/preview' || github.head_ref == 'preview') && needs.changes.outputs.koa == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -61,9 +59,8 @@ jobs:
 
   deploy-firebase-vercel:
     needs: [changes, test-firebase-vercel]
-    if: (github.ref == 'refs/heads/preview' || github.head_ref == 'preview') && needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
-    environment: preview
+    environment: dev
     steps:
       - uses: actions/checkout@v4
 
