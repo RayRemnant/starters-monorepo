@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: Monorepo tests
+name: Production Test & Deploy
 
 on:
   push: [main]
