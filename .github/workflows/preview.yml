@@ -27,9 +27,8 @@ jobs:
               - 'koa/**'
 
   test-firebase-vercel:
-    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     needs: changes
-    if: needs.changes.outputs.firebase-vercel == 'true'
+    if: (github.ref == 'refs/heads/preview' || github.head_ref == 'preview') && needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
     env:
       FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
@@ -49,9 +48,8 @@ jobs:
       - run: cd firebase-vercel && pnpm install && pnpm test
 
   test-koa:
-    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     needs: changes
-    if: needs.changes.outputs.koa == 'true'
+    if: (github.ref == 'refs/heads/preview' || github.head_ref == 'preview') && needs.changes.outputs.koa == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,9 +62,8 @@ jobs:
       - run: cd koa && pnpm install && pnpm test
 
   deploy-firebase-vercel:
-    if: github.ref == 'refs/heads/preview' || github.head_ref == 'preview'
     needs: [changes, test-firebase-vercel]
-    if: needs.changes.outputs.firebase-vercel == 'true'
+    if: (github.ref == 'refs/heads/preview' || github.head_ref == 'preview') && needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
     environment: preview
     steps:
