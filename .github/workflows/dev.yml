@@ -64,7 +64,7 @@ jobs:
     needs: [changes, test-firebase-vercel]
     if: needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
-    environment: dev
+    environment: Dev
     steps:
       - uses: actions/checkout@v4
 
