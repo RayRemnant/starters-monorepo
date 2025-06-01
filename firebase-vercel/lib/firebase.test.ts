@@ -21,7 +21,7 @@ function matchesFields(expected: Record<string, unknown>, actual: Record<string,
   return Object.entries(expected).every(([key, value]) => actual[key] === value)
 }
 
-describe("delDoc", () => {
+describe("deleteDoc", () => {
   it("should return the expected object", async () => {
     await deleteDoc("codex", mockDocs[0].id)
     const result = await getDoc("codex", mockDocs[0].id)
