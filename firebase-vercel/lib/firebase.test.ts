@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { deleteDoc, deleteDocs, getDoc, getDocs, setDoc, setDocs } from "../api/firebase"
+import { deleteDoc, deleteDocs, getDoc, getDocs, setDoc, setDocs } from "../api/_firebase"
 
 const mockDocs = [
   {

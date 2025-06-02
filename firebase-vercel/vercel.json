@@ -1,10 +1,4 @@
 {
-  "redirects": [
-    {
-      "destination": "/404",
-      "source": "/api/firebase"
-    }
-  ],
   "git": {
     "deploymentEnabled": false
   }
