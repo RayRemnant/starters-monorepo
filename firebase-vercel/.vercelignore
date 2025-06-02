@@ -1,2 +1,4 @@
-package-lock.json
-pnpm-lock.yaml
+!api/
+!api/**
+!tsconfig.json
+!package.json
