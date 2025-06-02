@@ -4,7 +4,6 @@
   "description": "",
   "license": "0BSD",
   "author": "rayremnant",
-  "type": "module",
   "main": "/api/index.js",
   "scripts": {
     "test": "vitest",
