@@ -61,6 +61,7 @@ jobs:
 
   deploy-firebase-vercel:
     needs: [changes, test-firebase-vercel]
+    if: needs.changes.outputs.firebase-vercel == 'true'
     runs-on: ubuntu-latest
     environment: preview
     steps:
