@@ -5,16 +5,22 @@ This project is a starter template integrating Firebase with Vercel serverless f
 ## Available API Endpoints
 
 ### `GET /api/getDoc`
-Fetch a single document from Firebase.
+Fetch a single document.
 
 ### `GET /api/getDocs`
-Fetch multiple documents from Firebase.
+Fetch multiple documents.
 
 ### `POST /api/setDoc`
-Create or update a single document in Firebase.
+Create or update a single document.
 
 ### `POST /api/setDocs`
-Create or update multiple documents in Firebase.
+Create or update multiple documents.
+
+### `POST /api/deleteDoc`
+Delete a single document.
+
+### `POST /api/deleteDocs`
+Delete multiple documents.
 
 ## API Documentation & Demo
 
