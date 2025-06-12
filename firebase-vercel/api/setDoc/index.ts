@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node"
 
-import { setDoc } from "../_firebase.js"
+import { setDoc } from "../_firebase"
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const {

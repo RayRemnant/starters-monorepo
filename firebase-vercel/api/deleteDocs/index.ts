@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node"
 
-import { deleteDocs } from "../_firebase.js"
+import { deleteDocs } from "../_firebase"
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const {
