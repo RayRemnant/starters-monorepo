@@ -20,17 +20,9 @@ const firebaseConfig = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 }
 
-console.log("apiKey", firebaseConfig.apiKey)
-console.log("appId", firebaseConfig.appId)
-console.log("authDomain", firebaseConfig.authDomain)
-console.log("messagingSenderId", firebaseConfig.messagingSenderId)
-console.log("projectId", firebaseConfig.projectId)
-console.log("storageBucket", firebaseConfig.storageBucket)
-
 const app = initializeApp(firebaseConfig)
 const db = firestore.getFirestore(app)
 
-// Get single doc
 async function getDoc<T extends ActualDocumentData = ActualDocumentData>(
   collectionName: string,
   docId: string
@@ -40,7 +32,6 @@ async function getDoc<T extends ActualDocumentData = ActualDocumentData>(
   return docSnap.data() as T | undefined
 }
 
-// Get multiple docs
 async function getDocs<T extends ActualDocumentData = ActualDocumentData>(
   collectionName: string
 ): Promise<T[]> {
@@ -49,7 +40,6 @@ async function getDocs<T extends ActualDocumentData = ActualDocumentData>(
   return collectionSnapshot.docs.map(_doc => _doc.data() as T)
 }
 
-// Set single doc
 async function setDoc<T extends Pick<ActualDocumentData, "id"> = Pick<ActualDocumentData, "id">>(
   collectionName: string,
   doc: T
@@ -60,7 +50,6 @@ async function setDoc<T extends Pick<ActualDocumentData, "id"> = Pick<ActualDocu
   })
 }
 
-// Set multiple docs
 async function setDocs<T extends Pick<ActualDocumentData, "id"> = Pick<ActualDocumentData, "id">>(
   collectionName: string,
   docs: T[]
