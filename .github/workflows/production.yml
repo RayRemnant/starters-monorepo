@@ -74,7 +74,7 @@ jobs:
           version: 10
       - name: Install Vercel CLI
         run: pnpm add -g vercel@latest
-      - name: Sync env vars and deploy
+      - name: Deploy on Vercel
         working-directory: ./firebase-vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -82,16 +82,10 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           vercel link --yes --project firebase-vercel --token $VERCEL_TOKEN
-          vercel env rm FIREBASE_API_KEY development --yes --token $VERCEL_TOKEN || true
-          echo "${{ secrets.FIREBASE_API_KEY }}" | vercel env add FIREBASE_API_KEY development --token $VERCEL_TOKEN
-          vercel env rm FIREBASE_APP_ID development --yes --token $VERCEL_TOKEN || true
-          echo "${{ secrets.FIREBASE_APP_ID }}" | vercel env add FIREBASE_APP_ID development --token $VERCEL_TOKEN
-          vercel env rm FIREBASE_AUTH_DOMAIN development --yes --token $VERCEL_TOKEN || true
-          echo "${{ secrets.FIREBASE_AUTH_DOMAIN }}" | vercel env add FIREBASE_AUTH_DOMAIN development --token $VERCEL_TOKEN
-          vercel env rm FIREBASE_MESSAGING_SENDER_ID development --yes --token $VERCEL_TOKEN || true
-          echo "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}" | vercel env add FIREBASE_MESSAGING_SENDER_ID development --token $VERCEL_TOKEN
-          vercel env rm FIREBASE_PROJECT_ID development --yes --token $VERCEL_TOKEN || true
-          echo "${{ secrets.FIREBASE_PROJECT_ID }}" | vercel env add FIREBASE_PROJECT_ID development --token $VERCEL_TOKEN
-          vercel env rm FIREBASE_STORAGE_BUCKET development --yes --token $VERCEL_TOKEN || true
-          echo "${{ secrets.FIREBASE_STORAGE_BUCKET }}" | vercel env add FIREBASE_STORAGE_BUCKET development --token $VERCEL_TOKEN
           vercel deploy --prod --token $VERCEL_TOKEN
+          --env FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}
+          --env FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }}
+          --env FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          --env FIREBASE_MESSAGING_SENDER_ID=${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          --env FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}
+          --env FIREBASE_STORAGE_BUCKET=${{ secrets.FIREBASE_STORAGE_BUCKET }}
